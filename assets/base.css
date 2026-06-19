@@ -1,0 +1,225 @@
+/* =============================================================
+   base.css — 共享设计系统 / Shared design system
+   -------------------------------------------------------------
+   所有页面（门户首页 index.html 与各项目展示页）都引用这一个文件，
+   以保证整站视觉统一。请勿在单个页面里重复定义这里已有的样式；
+   如需扩展，优先在这里新增 token 或组件类。
+
+   All pages (the portal index.html and every project page) include
+   this single file so the whole site stays visually consistent.
+   Don't redefine what's here inside individual pages — add new
+   tokens or component classes here instead.
+   ============================================================= */
+
+/* ---------- Design tokens ---------- */
+:root {
+    /* Color — light theme */
+    --bg: #f9fafb;
+    --bg-subtle: #f3f4f6;
+    --card-bg: #ffffff;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --accent-soft-bg: #eef2ff;
+    --accent-soft-text: #4338ca;
+    --border: #e5e7eb;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    /* Layout */
+    --radius: 12px;
+    --radius-sm: 8px;
+    --max-width: 960px;
+    --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto,
+        'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --font-mono: 'SFMono-Regular', ui-monospace, Menlo, Consolas, monospace;
+}
+
+/* Dark theme — 自动跟随系统设置 / follows the OS setting automatically */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0f172a;
+        --bg-subtle: #1e293b;
+        --card-bg: #1e293b;
+        --text: #e2e8f0;
+        --text-light: #94a3b8;
+        --accent: #60a5fa;
+        --accent-hover: #93c5fd;
+        --accent-soft-bg: #1e293b;
+        --accent-soft-text: #a5b4fc;
+        --border: #334155;
+        --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* ---------- Reset & base elements ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--bg-subtle);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+}
+
+/* ---------- Layout ---------- */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    width: 100%;
+    flex: 1;
+}
+
+header {
+    text-align: center;
+    padding: 3rem 0 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    border-top: 1px solid var(--border);
+}
+
+/* ---------- Components ---------- */
+
+/* Badge / pill label */
+.badge {
+    display: inline-block;
+    background: var(--accent-soft-bg);
+    color: var(--accent-soft-text);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+.cta-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+.btn:hover { text-decoration: none; }
+
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-hover); }
+
+.btn-outline {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--text);
+}
+.btn-outline:hover { background: var(--bg-subtle); }
+
+/* Card grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover { box-shadow: var(--shadow-lg); }
+
+.card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.card p { color: var(--text-light); font-size: 0.95rem; }
+
+/* A card that is itself a link (used for the project gallery) */
+a.card { color: inherit; display: block; }
+a.card:hover { text-decoration: none; transform: translateY(-2px); }
+a.card .card-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Demo / content panel */
+.panel {
+    margin: 3rem 0;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+.panel h2 { margin-bottom: 1rem; }
+
+.placeholder {
+    background: var(--bg-subtle);
+    border-radius: var(--radius-sm);
+    padding: 3rem 1rem;
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    .subtitle { font-size: 1.05rem; }
+    header { padding: 2rem 0 1.5rem; }
+}
