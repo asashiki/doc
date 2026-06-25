@@ -1,6 +1,18 @@
+<div align="center">
+
+<img src="https://cdn.jsdelivr.net/gh/asashiki/asashiki-design@main/assets/brand/asashiki-mark-color-t.png" alt="Asashiki" width="84" />
+
 # doc — 项目展示与文档站点
 
-一个纯静态的项目展示中心，托管在 **Cloudflare Pages**。
+一个纯静态的项目展示中心。首页用卡片列出各项目，每个项目有自己的展示页（在线演示 + 说明），全站共享一套设计系统。
+
+[![Live](https://img.shields.io/badge/Live-doc.asashiki.com-6b6570?style=flat-square&labelColor=221f26)](https://doc.asashiki.com)
+![Deploy](https://img.shields.io/badge/Deploy-Cloudflare_Pages-6b6570?style=flat-square&labelColor=221f26)
+![Build](https://img.shields.io/badge/Build-zero--config-6b6570?style=flat-square&labelColor=221f26)
+[![Asashiki Design](https://img.shields.io/badge/Asashiki-Design_System-e85d97?style=flat-square&labelColor=221f26)](https://github.com/asashiki/asashiki-design)
+
+</div>
+
 首页用卡片列出各个项目，每个项目有自己的展示页（在线演示 + 说明）。
 全站共享一套设计系统，新增项目只需复制模板、填内容、加一张卡片。
 
@@ -62,3 +74,9 @@ python3 -m http.server 8000
 - **Build output directory**：`/`（仓库根目录）
 
 连接到 GitHub 后，推送到生产分支即自动部署。
+
+---
+
+<div align="center">
+<sub>界面与文档遵循 <a href="https://github.com/asashiki/asashiki-design">Asashiki Design</a> · 墨と桜 —— 暖中性灰打底，樱粉作克制点缀。</sub>
+</div>
